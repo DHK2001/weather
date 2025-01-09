@@ -25,10 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={'${geistSans.variable} ${geistMono.variable} flex flex-col min-h-screen antialiased bg-gradient-to-r from-sky-400 to-blue-600 ...'}
+        className={'${geistSans.variable} ${geistMono.variable} flex flex-col min-h-screen bg-gradient-to-r from-sky-400 to-blue-600'}
       >
         <header>
-          <h1 className='text-3xl'>Weather App</h1>
+          <h1 className='text-3xl text-center py-5'>Weather App</h1>
         </header>
         <main className='flex-grow'>{children}</main>
         <footer className='bg-gray-600 text-white py-4 text-center'>
