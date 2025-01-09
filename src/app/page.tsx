@@ -38,23 +38,23 @@ export default function Home() {
             </div>
             {showMore === index && (
               <ul className="border-2 border-gray-300 rounded-lg flex flex-col items-center">
-                <li className="flex flex-row text-center items-center justify-center w-4/5 bg-black">
+                <li className="climateRow">
                   <img src="/icons/09d@2x.png" className="w-16" />
                   <p>9:00AM 80 80</p>
                 </li>
-                <li className="flex flex-row text-center items-center justify-center">
+                <li className="climateRow">
                   <img src="/icons/09d@2x.png" className="w-16" />
                   <p>9:00AM 80 80</p>
                 </li>
-                <li className="flex flex-row text-center items-center justify-center">
+                <li className="climateRow">
                   <img src="/icons/09d@2x.png" className="w-16" />
                   <p>9:00AM 80 80</p>
                 </li>
-                <li className="flex flex-row text-center items-center justify-center">
+                <li className="climateRow">
                   <img src="/icons/09d@2x.png" className="w-16" />
                   <p>9:00AM 80 80</p>
                 </li>
-                <li className="flex flex-row text-center items-center justify-center">
+                <li className="climateRow">
                   <img src="/icons/09d@2x.png" className="w-16" />
                   <p>9:00AM 80 80</p>
                 </li>

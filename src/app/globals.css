@@ -19,3 +19,9 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer utilities {
+  .climateRow {
+    @apply flex flex-row text-center items-center justify-center w-4/5 border-b-2 border-gray-300;
+  }
+}
