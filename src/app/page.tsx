@@ -1,4 +1,5 @@
 "use client";
+import { cities, getIcons } from "@/utils/helpers";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -12,14 +13,33 @@ export default function Home() {
   ];
 
   const [showMore, setShowMore] = useState<number | null>(null);
+  const [selectedCity, setSelectedCity] = useState<string>(cities[0].name + ", " + cities[0].country);
 
   const toggleDropdown = (index: number) => {
     setShowMore((prev) => (prev === index ? null : index));
   };
 
+  const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCity(event.target.value);
+    console.log(event.target.value);
+  };
+
   return (
     <>
-    <h2 className="text-center text-2xl">City Name</h2>
+   <div className="flex justify-center my-4">
+        <select
+          value={selectedCity}
+          onChange={handleCityChange}
+          className="border-2 border-gray-300 rounded-lg p-2 bg-transparent"
+        >
+          {cities.map((city, index) => (
+            <option key={index} value={city.name + ", " + city.country}>
+              {city.name}, {city.country}
+            </option>
+          ))}
+        </select>
+      </div>
+
       {items.length === 0 && <p>No items to display</p>}
       <ul className="flex text-center justify-center px-5">
         {items.map((item, index) => (
@@ -40,7 +60,7 @@ export default function Home() {
             {showMore === index && (
               <ul className="border-2 border-gray-300 rounded-lg flex flex-col items-center">
                 <li className="climateRow">
-                  <img src="/icons/09d@2x.png" className="w-16" />
+                  <img src={getIcons(800, "2025-01-10 1:28:00")} className="w-16" />
                   <p>9:00AM 80 80</p>
                 </li>
                 <li className="climateRow">

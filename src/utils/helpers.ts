@@ -1,3 +1,19 @@
+
+var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+export const cities = [
+    { name: "New York", country: "US" },
+    { name: "London", country: "GB" },
+    { name: "Tokyo", country: "JP" },
+    { name: "Paris", country: "FR" },
+    { name: "Berlin", country: "DE" },
+    { name: "Sydney", country: "AU" },
+    { name: "Toronto", country: "CA" },
+    { name: "Moscow", country: "RU" },
+    { name: "Beijing", country: "CN" },
+    { name: "Mumbai", country: "IN" }
+];
+
 export const getIcons = (icon: number, date:string) => {
 
     switch (icon) {
@@ -125,11 +141,20 @@ export const getIcons = (icon: number, date:string) => {
 
 const getDayOrNight = (dateString: string): string => {
     const date = new Date(dateString);
-    const hours = date.getHours();
-  
+    const hours = date.getHours();  
     if (hours >= 6 && hours < 18) {
       return "Day";
     } else {
       return "Night";
     }
-  };
+};
+
+function getDate(dateString: string)
+{
+    const date = new Date(dateString);
+    var day = days[date.getDay()] + ' - ' + date.getDate() + 'th';
+    var ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+    var minutes = date.getMinutes() <= 9 ? '0'+date.getMinutes() : date.getMinutes();
+    var time = date.getHours() + ':' + minutes + ampm;
+    return {day, time};     
+}
