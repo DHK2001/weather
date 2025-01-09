@@ -19,6 +19,7 @@ export default function Home() {
 
   return (
     <>
+    <h2 className="text-center text-2xl">City Name</h2>
       {items.length === 0 && <p>No items to display</p>}
       <ul className="flex text-center justify-center px-5">
         {items.map((item, index) => (
