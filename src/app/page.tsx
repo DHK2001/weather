@@ -84,9 +84,9 @@ export default function Home() {
               />
               <p>
                 {getDate(item.date).time +
-                  " " +
+                  " °" +
                   item.temp_min +
-                  " " +
+                  " °" +
                   item.temp_max}
               </p>
 
@@ -124,7 +124,7 @@ export default function Home() {
                           />
                           <p>{getDate(item2.date).time}</p>
                         </div>
-                        <p>{item2.temp_min + " " + item2.temp_max}</p>
+                        <p>{"°" + item2.temp_min + " °" + item2.temp_max}</p>
                       </li>
                     ))}
                   </motion.ul>
