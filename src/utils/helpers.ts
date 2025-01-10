@@ -1,3 +1,5 @@
+import { WeatherData, WeatherHours } from "@/services/weather-interfaces";
+import { Weather } from "@/services/weather-interfaces";
 
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -149,12 +151,55 @@ const getDayOrNight = (dateString: string): string => {
     }
 };
 
-function getDate(dateString: string)
+export function getDate(dateString: string)
 {
     const date = new Date(dateString);
     var day = days[date.getDay()] + ' - ' + date.getDate() + 'th';
     var ampm = date.getHours() >= 12 ? 'PM' : 'AM';
     var minutes = date.getMinutes() <= 9 ? '0'+date.getMinutes() : date.getMinutes();
-    var time = date.getHours() + ':' + minutes + ampm;
+    var time = date.getHours() + ':' + minutes + " " + ampm;
     return {day, time};     
+}
+
+export function groupWeatherData(data: WeatherData)
+{
+    var currentDate = -1;
+    var weatherHours: WeatherHours[] = [];    
+    var weatherData: Weather[] = [];
+    var currentWeather = -1;
+
+    
+    for (var i = 0; i < data.list.length; i++) {
+        
+        if (currentDate != new Date(data.list[i].dt_txt).getDay()) {
+
+
+            if (currentDate != -1) {
+                var weather: Weather = {
+                    currentDay: currentDate,
+                    date: data.list[currentWeather].dt_txt,
+                    temp_min: data.list[currentWeather].main.temp_min,
+                    temp_max: data.list[currentWeather].main.temp_max,
+                    weatherId: data.list[currentWeather].weather[0].id,
+                    weatherHours: weatherHours
+                }
+
+                weatherData.push(weather);
+                weatherHours = [];
+            }
+
+            currentDate = new Date(data.list[i].dt_txt).getDay();
+            currentWeather = i;
+        } else {
+            weatherHours.push({
+                date: data.list[i].dt_txt,
+                temp_min: data.list[i].main.temp_min,
+                temp_max: data.list[i].main.temp_max,
+                weather: data.list[i].weather[0].id,
+            });
+            
+        }
+    }
+    console.log(weatherData);
+    return weatherData;     
 }

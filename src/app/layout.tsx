@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="min-w-min">
       <body
         className={'${geistSans.variable} ${geistMono.variable} flex flex-col min-h-screen bg-gradient-to-r from-sky-400 to-blue-600'}
       >
