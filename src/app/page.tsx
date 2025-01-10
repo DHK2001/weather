@@ -1,10 +1,9 @@
 "use client";
 import { fetchWeatherByCity } from "@/services/api";
-import { Weather, WeatherData } from "@/services/weather-interfaces";
+import { Weather } from "@/services/weather-interfaces";
 import { cities, getDate, getIcons, groupWeatherData } from "@/utils/helpers";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Suspense } from "react";
 
 export default function Home() {
   const [showMore, setShowMore] = useState<number | null>(null);
