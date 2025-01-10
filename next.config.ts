@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  images: {
+    domains: ['openweathermap.org'],
+  },
 };
 
 export default nextConfig;

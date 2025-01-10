@@ -4,6 +4,7 @@ import { Weather } from "@/services/weather-interfaces";
 import { cities, getDate, getIcons, groupWeatherData } from "@/utils/helpers";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Home() {
   const [showMore, setShowMore] = useState<number | null>(null);
@@ -76,17 +77,25 @@ export default function Home() {
           <h2 className="text-2xl text-center py-5">No items to display</h2>
         ) : null
       ) : (
-        <img src="/loading.svg" className="m-auto" alt="loading" />
+        <Image
+          className="m-auto"
+          src="/loading.svg"
+          alt="loading"
+          width={500}
+          height={500}
+        />
       )}
       <ul className="flex justify-center px-5 mb-5 max-w-7xl m-auto">
         {weatherData.map((item, index) => (
           <li key={index} className="w-4/5 px-2">
             <div className="border-2 border-gray-300 rounded-lg p-5 flex flex-col items-center text-center my-5">
               <p className="font-bold">{getDate(item.date).day}</p>
-              <img
+              <Image
                 className="max-w-60"
                 src={getIcons(item.weatherId, item.date)}
                 alt="weather"
+                width={100}
+                height={100}
               />
               <p>
                 {getDate(item.date).time +
@@ -126,9 +135,12 @@ export default function Home() {
                         }
                       >
                         <div className="flex flex-row text-center items-center justify-center p-0 mt-2">
-                          <img
-                            src={getIcons(item2.weather, item2.date)}
+                          <Image
                             className="w-10 m-0 p-0"
+                            src={getIcons(item2.weather, item2.date)}
+                            alt="weather"
+                            width={100}
+                            height={100}
                           />
                           <p>{getDate(item2.date).time}</p>
                         </div>
