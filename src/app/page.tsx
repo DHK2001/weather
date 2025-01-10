@@ -4,6 +4,7 @@ import { Weather, WeatherData } from "@/services/weather-interfaces";
 import { cities, getDate, getIcons, groupWeatherData } from "@/utils/helpers";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { Suspense } from "react";
 
 export default function Home() {
   const [showMore, setShowMore] = useState<number | null>(null);
@@ -11,6 +12,7 @@ export default function Home() {
     cities[0].name + ", " + cities[0].country
   );
   const [weatherData, setWeatherData] = useState<Weather[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadWeather = async () => {
@@ -20,6 +22,7 @@ export default function Home() {
       } catch (error) {
         console.error("Error fetching weather data:", error);
       } finally {
+        setLoading(false);
       }
     };
     loadWeather();
@@ -69,8 +72,12 @@ export default function Home() {
         </select>
       </div>
 
-      {weatherData.length === 0 && (
-        <h2 className="text-2xl text-center py-5">No items to display</h2>
+      {!loading ? (
+        weatherData.length === 0 ? (
+          <h2 className="text-2xl text-center py-5">No items to display</h2>
+        ) : null
+      ) : (
+        <img src="/loading.svg" className="m-auto" alt="loading" />
       )}
       <ul className="flex justify-center px-5 mb-5 max-w-7xl m-auto">
         {weatherData.map((item, index) => (
@@ -85,9 +92,11 @@ export default function Home() {
               <p>
                 {getDate(item.date).time +
                   " " +
-                  item.temp_min + "°" +
+                  item.temp_min +
+                  "°" +
                   " " +
-                  item.temp_max + "°"}
+                  item.temp_max +
+                  "°"}
               </p>
 
               <button
