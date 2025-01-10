@@ -117,14 +117,14 @@ export default function Home() {
                             : "temperatureRow"
                         }
                       >
-                        <div className="flex flex-row text-center items-center justify-start w-4/5">
+                        <div className="flex flex-row text-center items-center justify-center p-0 mt-2">
                           <img
                             src={getIcons(item2.weather, item2.date)}
-                            className="w-16"
+                            className="w-10 m-0 p-0"
                           />
                           <p>{getDate(item2.date).time}</p>
                         </div>
-                        <p>{"°" + item2.temp_min + " °" + item2.temp_max}</p>
+                        <p>{item2.temp_min + "° " + item2.temp_max + "°"}</p>
                       </li>
                     ))}
                   </motion.ul>
