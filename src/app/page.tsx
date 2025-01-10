@@ -84,10 +84,10 @@ export default function Home() {
               />
               <p>
                 {getDate(item.date).time +
-                  " °" +
-                  item.temp_min +
-                  " °" +
-                  item.temp_max}
+                  " " +
+                  item.temp_min + "°" +
+                  " " +
+                  item.temp_max + "°"}
               </p>
 
               <button

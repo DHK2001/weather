@@ -7,7 +7,7 @@ export const fetchWeatherByCity = async (city: string, country: string): Promise
     if (!apiKey) {
       throw new Error('API key not found');
     }
-    const url = `${baseUrl}?q=${city},${country}&appid=${apiKey}&units=imperial`;
+    const url = `${baseUrl}?q=${city},${country}&appid=${apiKey}&units=metric`;
     console.log(url);
     try {
       const response = await fetch(url, {
