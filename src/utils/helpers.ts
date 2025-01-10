@@ -171,8 +171,8 @@ export function groupWeatherData(data: WeatherData)
     
     for (var i = 0; i < data.list.length; i++) {
         
-        if (currentDate != new Date(data.list[i].dt_txt).getDay()) {
-
+        if (currentDate != new Date(data.list[i].dt_txt).getDay() || i == data.list.length-1) {
+            console.log(data.list[i].dt_txt);
 
             if (currentDate != -1) {
                 var weather: Weather = {
@@ -182,6 +182,15 @@ export function groupWeatherData(data: WeatherData)
                     temp_max: data.list[currentWeather].main.temp_max,
                     weatherId: data.list[currentWeather].weather[0].id,
                     weatherHours: weatherHours
+                }
+
+                if(i == data.list.length-1 && weatherHours.length > 0) {
+                    weatherHours.push({
+                        date: data.list[i].dt_txt,
+                        temp_min: data.list[i].main.temp_min,
+                        temp_max: data.list[i].main.temp_max,
+                        weather: data.list[i].weather[0].id,
+                    });
                 }
 
                 weatherData.push(weather);
@@ -200,6 +209,5 @@ export function groupWeatherData(data: WeatherData)
             
         }
     }
-    console.log(weatherData);
     return weatherData;     
 }

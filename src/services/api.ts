@@ -21,8 +21,7 @@ export const fetchWeatherByCity = async (city: string, country: string): Promise
       if (!response.ok) {
         throw new Error(`Error: ${response.status} ${response.statusText}`);
       }
-      const data: WeatherData = await response.json();
-      return data;
+      return response.json();
     } catch (error) {
       console.error('Error fetching weather by city:', error);
     }
