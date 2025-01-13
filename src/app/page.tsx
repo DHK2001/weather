@@ -3,45 +3,29 @@ import { fetchWeatherByCity } from "@/services/api";
 import { Weather } from "@/services/weather-interfaces";
 import { cities, getDate, getIcons, groupWeatherData } from "@/utils/helpers";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export default function Home() {
+  const queryClient = useQueryClient();
+
   const [showMore, setShowMore] = useState<number | null>(null);
   const [selectedCity, setSelectedCity] = useState<string>(
     cities[0].name + ", " + cities[0].country
   );
-  const [weatherData, setWeatherData] = useState<Weather[]>([]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const loadWeather = async () => {
-      try {
-        const data = await getDataWeather();
-        setWeatherData(groupWeatherData(data));
-      } catch (error) {
-        console.error("Error fetching weather data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadWeather();
-  }, []);
+  const { data: weatherData, isLoading } = useQuery({
+    queryKey: ["weatherData", selectedCity],
+    queryFn: async () => {
+      const [city, country] = selectedCity.split(", ");
+      const data = await fetchWeatherByCity(city, country);
+      return groupWeatherData(data);
+    },
+  });
 
   const toggleDropdown = (index: number) => {
     setShowMore((prev) => (prev === index ? null : index));
-  };
-
-  const getDataWeather = async () => {
-    var city = selectedCity.split(",")[0];
-    var countrySpace = selectedCity.split(",")[1];
-    var country = countrySpace.trim();
-    return await fetchWeatherByCity(city, country);
-  };
-
-  const updateDataWeather = async (city: string, country: string) => {
-    const data = await fetchWeatherByCity(city, country);
-    setWeatherData(groupWeatherData(data));
   };
 
   const handleCityChange = async (
@@ -49,11 +33,8 @@ export default function Home() {
   ) => {
     setSelectedCity(event.target.value);
 
-    var city = event.target.value.split(",")[0];
-    var countrySpace = event.target.value.split(",")[1];
-    var country = countrySpace.trim();
-
-    await updateDataWeather(city, country);
+    const [city, country] = event.target.value.split(", ");
+    await queryClient.invalidateQueries({ queryKey: ["weatherData", city, country] });
   };
 
   return (
@@ -72,8 +53,8 @@ export default function Home() {
         </select>
       </div>
 
-      {!loading ? (
-        weatherData.length === 0 ? (
+      {!isLoading ? (
+        weatherData && weatherData.length === 0 ? (
           <h2 className="text-2xl text-center py-5">No items to display</h2>
         ) : null
       ) : (
@@ -86,7 +67,7 @@ export default function Home() {
         />
       )}
       <ul className="flex justify-center px-5 mb-5 max-w-7xl m-auto">
-        {weatherData.map((item, index) => (
+        {weatherData?.map((item, index) => (
           <li key={index} className="w-4/5 px-2">
             <div className="border-2 border-gray-300 rounded-lg p-5 flex flex-col items-center text-center my-5">
               <p className="font-bold">{getDate(item.date).day}</p>
