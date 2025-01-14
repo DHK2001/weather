@@ -10,11 +10,13 @@ import Loading from "@/components/loading";
 import SelectOptions from "@/components/select-options";
 import React from "react";
 import { useStore } from "@/store";
+import UnitsButton from "@/components/button-units";
 
 export default function Home() {
   const queryClient = useQueryClient();
 
-  const { units, setUnits, city, setCity, countryCode, setCountryCode } = useStore();
+  const { units, setUnits, city, setCity, countryCode, setCountryCode } =
+    useStore();
   const [showMore, setShowMore] = useState<number | null>(null);
 
   const { data: forecastData, isLoading } = useQuery({
@@ -58,28 +60,7 @@ export default function Home() {
           selectedCity={city + ", " + countryCode}
           handleCityChange={handleCityChange}
         />
-        <div className="flex-row self-end text-center ml-5">
-          <button
-            className={
-              units == "metric"
-                ? "temperature-button-active mr-2"
-                : "temperature-button mr-2"
-            }
-            onClick={buttonC}
-          >
-            <p>°C</p>
-          </button>
-          <button
-            className={
-              units == "imperial"
-                ? "temperature-button-active"
-                : "temperature-button"
-            }
-            onClick={buttonF}
-          >
-            <p>°F</p>
-          </button>
-        </div>
+        <UnitsButton units={units} buttonC={buttonC} buttonF={buttonF} />
       </div>
 
       {!isLoading ? (
