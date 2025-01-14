@@ -10,7 +10,7 @@ interface Props {
 
 function Card({ item, index, toggleDropdown }: Props) {
   return (
-    <div className="border-2 border-gray-300 rounded-lg p-5 flex flex-col items-center text-center my-5">
+    <div className="card-weather">
       <p className="font-bold">{getDate(item.date).day}</p>
       <Image
         className="max-w-60"
@@ -33,7 +33,7 @@ function Card({ item, index, toggleDropdown }: Props) {
         <button
           key={index}
           onClick={() => toggleDropdown(index)}
-          className="bg-blue-400 text-white px-4 py-2 rounded-lg mt-4"
+          className="show-more-button"
         >
           Show More
         </button>

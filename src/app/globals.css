@@ -21,15 +21,23 @@ body {
 }
 
 @layer utilities {
-  .weatherHour {
+  .weather-hour {
     @apply border-2 border-gray-300 rounded-lg flex flex-col items-center max-h-80 overflow-y-scroll;
   }
 
-  .temperatureRow {
+  .temperature-row {
     @apply flex-col text-center items-center justify-center w-4/5 border-b-2 border-gray-300;
   }
 
-  .temperatureRowEnd {
+  .temperature-row-end {
     @apply flex-col text-center items-center justify-center w-4/5 mb-2;
+  }
+
+  .card-weather {
+    @apply border-2 border-gray-300 rounded-lg p-5 flex flex-col items-center text-center my-5 hover:border-blue-900
+  }
+
+  .show-more-button {
+    @apply bg-blue-400 text-white px-4 py-2 rounded-lg mt-4 border-2 border-transparent hover:border-blue-900
   }
 }

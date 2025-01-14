@@ -10,15 +10,15 @@ function AnimatedCard({ item }: { item: Weather }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
-      className="weatherHour"
+      className="weather-hour"
     >
       {item.weatherHours.map((item2, index) => (
         <li
           key={index}
           className={
             item.weatherHours.length - 1 === index
-              ? "temperatureRowEnd"
-              : "temperatureRow"
+              ? "temperature-row-end"
+              : "temperature-row"
           }
         >
           <div className="flex flex-row text-center items-center justify-center p-0 mt-2">
@@ -41,7 +41,7 @@ function AnimatedCard({ item }: { item: Weather }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
-      className="weatherHour"
+      className="weather-hour"
     >
       <h3 className="text-center py-5">No items to display</h3>
     </motion.div>
