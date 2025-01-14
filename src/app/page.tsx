@@ -9,31 +9,32 @@ import AnimatedCard from "@/components/animated-card";
 import Loading from "@/components/loading";
 import SelectOptions from "@/components/select-options";
 import React from "react";
+import { useStore } from "@/store";
 
 export default function Home() {
   const queryClient = useQueryClient();
 
-  const [temperature, setTemperature] = useState("metric");
+  const { units, setUnits } = useStore();
   const [showMore, setShowMore] = useState<number | null>(null);
   const [selectedCity, setSelectedCity] = useState<string>(
     cities[0].name + ", " + cities[0].country
   );
 
   const { data: forecastData, isLoading } = useQuery({
-    queryKey: ["forecastData", selectedCity, temperature],
+    queryKey: ["forecastData", selectedCity, units],
     queryFn: async () => {
       const [city, country] = selectedCity.split(", ");
-      const data = await fetchForecastByCity(city, country, temperature);
+      const data = await fetchForecastByCity(city, country, units);
       return groupForecastData(data);
     },
   });
 
   const buttonC = async () => {
-    setTemperature("metric");
+    setUnits("metric");
   };
 
   const buttonF = async () => {
-    setTemperature("imperial");
+    setUnits("imperial");
   };
 
   const handleCityChange = async (
@@ -43,16 +44,16 @@ export default function Home() {
 
     const [city, country] = event.target.value.split(", ");
     await queryClient.invalidateQueries({
-      queryKey: ["forecastData", city, country, temperature],
+      queryKey: ["forecastData", city, country, units],
     });
   };
 
   React.useEffect(() => {
     const [city, country] = selectedCity.split(", ");
     queryClient.invalidateQueries({
-      queryKey: ["forecastData", city, country, temperature],
+      queryKey: ["forecastData", city, country, units],
     });
-  }, [temperature, selectedCity, queryClient]);
+  }, [units, selectedCity, queryClient]);
 
   return (
     <>
@@ -63,10 +64,24 @@ export default function Home() {
           handleCityChange={handleCityChange}
         />
         <div className="flex-row self-end text-center ml-5">
-          <button className={temperature=="metric"? "temperature-button-active mr-2" : "temperature-button mr-2"}  onClick={buttonC}>
+          <button
+            className={
+              units == "metric"
+                ? "temperature-button-active mr-2"
+                : "temperature-button mr-2"
+            }
+            onClick={buttonC}
+          >
             <p>°C</p>
           </button>
-          <button className={temperature=="imperial"? "temperature-button-active" : "temperature-button"} onClick={buttonF}>
+          <button
+            className={
+              units == "imperial"
+                ? "temperature-button-active"
+                : "temperature-button"
+            }
+            onClick={buttonF}
+          >
             <p>°F</p>
           </button>
         </div>

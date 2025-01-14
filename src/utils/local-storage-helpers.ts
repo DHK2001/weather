@@ -14,3 +14,11 @@ export function localStorageSetCountryCode(countryCode: string) {
 export function localStorageGetCountryCode() {
     return localStorage.getItem("countryCode");
 }
+
+export function localStorageSetUnits(units: string) {
+  localStorage.setItem("units", units);
+}
+
+export function localStorageGetUnits() {
+  return localStorage.getItem("units");
+}
