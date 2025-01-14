@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Providers from "../providers/providers";
+import Providers from "@/providers/providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,8 +31,8 @@ export default function RootLayout({
         }
       >
         <Providers>
-          <header>
-            <h1 className="text-3xl text-center py-5">Weather App</h1>
+          <header className="bg-gray-600 text-white py-2 text-center sticky top-0 mb-5">
+            <h1 className="text-2xl text-center">Weather App</h1>
           </header>
           <main className="flex-grow items-center justify-center text-black">
             {children}

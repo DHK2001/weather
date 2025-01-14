@@ -56,32 +56,34 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex-row justify-center text-center m-0 p-0">
-        <button className="temperature-button mr-2" onClick={buttonC}>
-          <p>°C</p>
-        </button>
-        <button className="temperature-button ml-2" onClick={buttonF}>
-          <p>°F</p>
-        </button>
-      </div>
-      <div className="flex justify-center my-4">
+      <div className="flex items-center justify-center ml-5 mr-5 mt-5">
         <SelectOptions
           items={cities}
           selectedCity={selectedCity}
           handleCityChange={handleCityChange}
         />
+        <div className="flex-row self-end text-center ml-5">
+          <button className="temperature-button mr-2" onClick={buttonC}>
+            <p>°C</p>
+          </button>
+          <button className="temperature-button" onClick={buttonF}>
+            <p>°F</p>
+          </button>
+        </div>
       </div>
 
       {!isLoading ? (
         forecastData && forecastData.length === 0 ? (
-          <h2 className="text-2xl text-center py-5 text-white">No items to display</h2>
+          <h2 className="text-2xl text-center py-5 text-white">
+            No items to display
+          </h2>
         ) : null
       ) : (
         <Loading />
       )}
-      <ul className="flex justify-center px-5 mb-5 max-w-7xl m-auto">
+      <ul className="flex flex-wrap justify-center overflow-y-auto max-h-[75vh]">
         {forecastData?.map((item, index) => (
-          <li key={index} className="w-4/5 px-2">
+          <li key={index} className="w-60 ml-2 mr-2">
             <Card
               item={item}
               cityCountry={selectedCity}

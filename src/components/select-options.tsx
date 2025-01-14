@@ -11,7 +11,7 @@ function SelectOptions({ items, selectedCity, handleCityChange }: Props) {
     <select
       value={selectedCity}
       onChange={handleCityChange}
-      className="bg-transparent text-white p-2 rounded-lg text-lg border-2 border-white px-4 py-2"
+      className="bg-transparent text-lg px-4 py-2 rounded-lg border-2 text-white border-white hover:border-blue-900  hover:text-blue-900 mb-5"
     >
       {items.map((item, index) => (
         <option

@@ -46,6 +46,6 @@ body {
   }
 
   .temperature-button {
-    @apply bg-transparent text-lg px-4 py-2 rounded-lg mt-4 border-2 text-white border-white hover:border-blue-900  hover:text-blue-900 mb-5
+    @apply bg-transparent text-lg px-4 py-2 rounded-lg border-2 text-white border-white hover:border-blue-900  hover:text-blue-900 mb-5
   }
 }
