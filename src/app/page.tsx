@@ -14,17 +14,13 @@ import { useStore } from "@/store";
 export default function Home() {
   const queryClient = useQueryClient();
 
-  const { units, setUnits } = useStore();
+  const { units, setUnits, city, setCity, countryCode, setCountryCode } = useStore();
   const [showMore, setShowMore] = useState<number | null>(null);
-  const [selectedCity, setSelectedCity] = useState<string>(
-    cities[0].name + ", " + cities[0].country
-  );
 
   const { data: forecastData, isLoading } = useQuery({
-    queryKey: ["forecastData", selectedCity, units],
+    queryKey: ["forecastData", city, countryCode, units],
     queryFn: async () => {
-      const [city, country] = selectedCity.split(", ");
-      const data = await fetchForecastByCity(city, country, units);
+      const data = await fetchForecastByCity(city, countryCode, units);
       return groupForecastData(data);
     },
   });
@@ -40,27 +36,26 @@ export default function Home() {
   const handleCityChange = async (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    setSelectedCity(event.target.value);
-
     const [city, country] = event.target.value.split(", ");
+    setCity(city);
+    setCountryCode(country);
     await queryClient.invalidateQueries({
       queryKey: ["forecastData", city, country, units],
     });
   };
 
   React.useEffect(() => {
-    const [city, country] = selectedCity.split(", ");
     queryClient.invalidateQueries({
-      queryKey: ["forecastData", city, country, units],
+      queryKey: ["forecastData", city, countryCode, units],
     });
-  }, [units, selectedCity, queryClient]);
+  }, [units, city, countryCode, queryClient]);
 
   return (
     <>
       <div className="flex items-center justify-center ml-5 mr-5 mt-5">
         <SelectOptions
           items={cities}
-          selectedCity={selectedCity}
+          selectedCity={city + ", " + countryCode}
           handleCityChange={handleCityChange}
         />
         <div className="flex-row self-end text-center ml-5">
@@ -101,7 +96,7 @@ export default function Home() {
           <li key={index} className="w-60 ml-2 mr-2">
             <Card
               item={item}
-              cityCountry={selectedCity}
+              cityCountry={city + ", " + countryCode}
               index={index}
               toggleDropdown={() =>
                 setShowMore((prev) => (prev === index ? null : index))
