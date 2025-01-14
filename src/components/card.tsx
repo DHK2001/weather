@@ -2,7 +2,10 @@
 
 import { Weather } from "@/services/weather-interfaces";
 import { getDate, getDateRoute, getIcons } from "@/utils/helpers";
-import { localStorageSetCity, localStorageSetCountryCode } from "@/utils/local-storage-helpers";
+import {
+  localStorageSetCity,
+  localStorageSetCountryCode,
+} from "@/utils/local-storage-helpers";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -42,7 +45,10 @@ function Card({ item, cityCountry, index, toggleDropdown }: Props) {
   //ffffff -- color card seleccionada
   //fbfbfa -- color otras cards
   return (
-    <div className={validateDate() ? "card-weather-actual" : "card-weather" } onClick={handleCardClick}>
+    <div
+      className={validateDate() ? "card-weather-actual" : "card-weather"}
+      onClick={handleCardClick}
+    >
       <p className="font-bold">{getDate(item.date).day}</p>
       <Image
         className="max-w-60"

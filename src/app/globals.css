@@ -44,4 +44,8 @@ body {
   .show-more-button {
     @apply bg-sky-400 font-bold px-4 py-2 rounded-lg mt-4 border-2 border-transparent hover:border-blue-900
   }
+
+  .temperature-button {
+    @apply bg-transparent text-lg px-4 py-2 rounded-lg mt-4 border-2 text-white border-white hover:border-blue-900  hover:text-blue-900 mb-5
+  }
 }

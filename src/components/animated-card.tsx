@@ -43,7 +43,7 @@ function AnimatedCard({ item }: { item: Weather }) {
       transition={{ duration: 0.3 }}
       className="weather-hour"
     >
-      <h3 className="text-center py-5">No items to display</h3>
+      <h3 className="text-center py-5 text-white">No items to display</h3>
     </motion.div>
   );
 }

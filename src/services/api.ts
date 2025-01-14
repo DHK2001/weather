@@ -3,12 +3,12 @@ const weathertUrl = "/openweathermap-weather";
 
 import { WeatherData } from "./weather-interfaces";
 
-export const fetchForecastByCity = async (city: string, country: string): Promise<WeatherData>  => { 
+export const fetchForecastByCity = async (city: string, country: string, units:string): Promise<WeatherData>  => { 
     const apiKey = process.env.NEXT_PUBLIC_API_KEY;
     if (!apiKey) {
       throw new Error('API key not found');
     }
-    const url = `${forecastUrl}?q=${city},${country}&appid=${apiKey}&units=metric`;
+    const url = `${forecastUrl}?q=${city},${country}&appid=${apiKey}&units=${units}`;
 
     try {
       const response = await fetch(url, {

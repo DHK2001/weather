@@ -11,13 +11,12 @@ function SelectOptions({ items, selectedCity, handleCityChange }: Props) {
     <select
       value={selectedCity}
       onChange={handleCityChange}
-      className="bg-white text-black p-2 rounded-lg "
+      className="bg-transparent text-white p-2 rounded-lg text-lg border-2 border-white px-4 py-2"
     >
       {items.map((item, index) => (
         <option
           key={index}
           value={item.name + ", " + item.country}
-          className="bg-gray-200 text-black"
         >
           {item.name}, {item.country}
         </option>
