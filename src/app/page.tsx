@@ -1,6 +1,6 @@
 "use client";
-import { fetchWeatherByCity } from "@/services/api";
-import { cities, groupWeatherData } from "@/utils/helpers";
+import { fetchForecastByCity } from "@/services/api";
+import { cities, groupForecastData } from "@/utils/helpers";
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -17,12 +17,12 @@ export default function Home() {
     cities[0].name + ", " + cities[0].country
   );
 
-  const { data: weatherData, isLoading } = useQuery({
-    queryKey: ["weatherData", selectedCity],
+  const { data: forecastData, isLoading } = useQuery({
+    queryKey: ["forecastData", selectedCity],
     queryFn: async () => {
       const [city, country] = selectedCity.split(", ");
-      const data = await fetchWeatherByCity(city, country);
-      return groupWeatherData(data);
+      const data = await fetchForecastByCity(city, country);
+      return groupForecastData(data);
     },
   });
 
@@ -48,17 +48,18 @@ export default function Home() {
       </div>
 
       {!isLoading ? (
-        weatherData && weatherData.length === 0 ? (
+        forecastData && forecastData.length === 0 ? (
           <h2 className="text-2xl text-center py-5">No items to display</h2>
         ) : null
       ) : (
         <Loading />
       )}
       <ul className="flex justify-center px-5 mb-5 max-w-7xl m-auto">
-        {weatherData?.map((item, index) => (
+        {forecastData?.map((item, index) => (
           <li key={index} className="w-4/5 px-2">
             <Card
               item={item}
+              cityCountry={selectedCity}
               index={index}
               toggleDropdown={() =>
                 setShowMore((prev) => (prev === index ? null : index))

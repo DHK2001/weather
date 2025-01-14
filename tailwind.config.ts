@@ -11,6 +11,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        selectedCard: "#ebebe8",
+        nonSelectedCard: "#ffffff",
       },
     },
   },

@@ -1,7 +1,8 @@
 import { WeatherData, WeatherHours } from "@/services/weather-interfaces";
 import { Weather } from "@/services/weather-interfaces";
 
-var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 export const cities = [
     { name: "New York", country: "US" },
@@ -161,13 +162,12 @@ export function getDate(dateString: string)
     return {day, time};     
 }
 
-export function groupWeatherData(data: WeatherData)
+export function groupForecastData(data: WeatherData)
 {
     var currentDate = -1;
     var weatherHours: WeatherHours[] = [];    
     var weatherData: Weather[] = [];
     var currentWeather = -1;
-    console.log(data);
     
     for (var i = 0; i < data.list.length; i++) {
         
@@ -210,4 +210,9 @@ export function groupWeatherData(data: WeatherData)
         }
     }
     return weatherData;     
+}
+
+export function getDateRoute(dateS: string) {
+    const date = new Date(dateS);
+    return (months[date.getMonth()]) + '-' + date.getDate() + '-' + date.getFullYear() ;
 }

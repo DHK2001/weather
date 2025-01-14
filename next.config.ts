@@ -5,8 +5,12 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: '/api-weather',
+        source: '/openweathermap-forecast',
         destination: 'https://api.openweathermap.org/data/2.5/forecast',
+      },
+      {
+        source: '/openweathermap-weather',
+        destination: 'https://api.openweathermap.org/data/2.5/weather',
       },
     ]
   },

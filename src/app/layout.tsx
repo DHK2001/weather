@@ -34,7 +34,7 @@ export default function RootLayout({
           <header>
             <h1 className="text-3xl text-center py-5">Weather App</h1>
           </header>
-          <main className="flex-grow items-center justify-center ">
+          <main className="flex-grow items-center justify-center text-black">
             {children}
           </main>
           <footer className="bg-gray-600 text-white py-4 text-center sticky bottom-0">
