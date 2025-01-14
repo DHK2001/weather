@@ -63,10 +63,10 @@ export default function Home() {
           handleCityChange={handleCityChange}
         />
         <div className="flex-row self-end text-center ml-5">
-          <button className="temperature-button mr-2" onClick={buttonC}>
+          <button className={temperature=="metric"? "temperature-button-active mr-2" : "temperature-button mr-2"}  onClick={buttonC}>
             <p>°C</p>
           </button>
-          <button className="temperature-button" onClick={buttonF}>
+          <button className={temperature=="imperial"? "temperature-button-active" : "temperature-button"} onClick={buttonF}>
             <p>°F</p>
           </button>
         </div>
