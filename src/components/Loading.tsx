@@ -1,14 +1,13 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 function Loading() {
-
   return (
     <Image
-        className="m-auto"
-        src="/loading.svg"
-        alt="loading"
-        width={300}
-        height={300}
+      className="m-auto"
+      src="/loading.svg"
+      alt="loading"
+      width={300}
+      height={300}
     />
   );
 }

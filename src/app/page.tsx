@@ -5,9 +5,9 @@ import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Card from "@/components/card";
-import AnimatedCard from "@/components/AnimatedCard";
-import Loading from "@/components/Loading";
-import SelectOptions from "@/components/SelectOptions";
+import AnimatedCard from "@/components/animated-card";
+import Loading from "@/components/loading";
+import SelectOptions from "@/components/select-options";
 
 export default function Home() {
   const queryClient = useQueryClient();
@@ -32,13 +32,19 @@ export default function Home() {
     setSelectedCity(event.target.value);
 
     const [city, country] = event.target.value.split(", ");
-    await queryClient.invalidateQueries({ queryKey: ["weatherData", city, country] });
+    await queryClient.invalidateQueries({
+      queryKey: ["weatherData", city, country],
+    });
   };
 
   return (
     <>
       <div className="flex justify-center my-4">
-        <SelectOptions items={cities} selectedCity={selectedCity} handleCityChange={handleCityChange}/>
+        <SelectOptions
+          items={cities}
+          selectedCity={selectedCity}
+          handleCityChange={handleCityChange}
+        />
       </div>
 
       {!isLoading ? (
@@ -51,11 +57,15 @@ export default function Home() {
       <ul className="flex justify-center px-5 mb-5 max-w-7xl m-auto">
         {weatherData?.map((item, index) => (
           <li key={index} className="w-4/5 px-2">
-            <Card item={item} index={index} toggleDropdown={() => setShowMore((prev) => (prev === index ? null : index))} />
+            <Card
+              item={item}
+              index={index}
+              toggleDropdown={() =>
+                setShowMore((prev) => (prev === index ? null : index))
+              }
+            />
             <AnimatePresence>
-              {showMore === index ? (
-                <AnimatedCard item={item}/>
-              ) : null}
+              {showMore === index ? <AnimatedCard item={item} /> : null}
             </AnimatePresence>
           </li>
         ))}
