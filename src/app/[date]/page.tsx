@@ -6,6 +6,7 @@ import {
   localStorageGetCountryCode,
 } from "@/utils/local-storage-helpers";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import React from "react";
 
@@ -24,7 +25,9 @@ const page = () => {
   });
 
   const { date } = useParams();
-  return <div>page: {date}</div>;
+  return <>
+    <Link href="/">Go Back</Link>
+  </>;
 };
 
 export default page;

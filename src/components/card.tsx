@@ -30,9 +30,7 @@ function Card({ item, cityCountry, index, toggleDropdown }: Props) {
   };
 
   const validateDate = () => {
-    const today = new Date();
-    const date = new Date(item.date);
-    return today.getDate() === date.getDate();
+    return index === 0;
   };
 
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -42,8 +40,7 @@ function Card({ item, cityCountry, index, toggleDropdown }: Props) {
       toggleDropdown(index);
     }
   };
-  //ffffff -- color card seleccionada
-  //fbfbfa -- color otras cards
+
   return (
     <div
       className={validateDate() ? "card-weather-actual" : "card-weather"}
