@@ -15,6 +15,7 @@ export interface ForecastItem {
 export interface WeatherDescription {
     id: number;
     main: string;
+    icon: string;
     description: string;
 }
 
@@ -24,6 +25,7 @@ export type Weather = {
     temp_min: number,
     temp_max: Number,
     weatherId: number,
+    weatherIcon: string,
     weatherHours: WeatherHours[]
 }
 
@@ -31,5 +33,6 @@ export type WeatherHours = {
     date: string,
     temp_min: number,
     temp_max: number,
-    weather: number,
+    weather: string,
+    weatherId: number,
 }

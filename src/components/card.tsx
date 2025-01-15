@@ -1,7 +1,7 @@
 "use client";
 
 import { Weather } from "@/services/forecast-interfaces";
-import { getDate, getIcons } from "@/utils/helpers";
+import { getDate, getIconUrl } from "@/utils/helpers";
 import {
   localStorageSetCity,
   localStorageSetCountryCode,
@@ -49,7 +49,7 @@ function Card({ item, cityCountry, index, toggleDropdown }: Props) {
       <p className="font-bold">{getDate(item.date).day}</p>
       <Image
         className="max-w-60"
-        src={getIcons(item.weatherId, item.date)}
+        src={getIconUrl(item.weatherIcon)}
         alt="weather"
         width={100}
         height={100}

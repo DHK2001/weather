@@ -17,141 +17,6 @@ export const cities = [
     { name: "Mumbai", country: "IN" }
 ];
 
-export const getIcons = (icon: number, date:string) => {
-
-    switch (icon) {
-        //Thunderstorm
-        case 200:
-            return getDayOrNight(date) === "Day" ? ` https://openweathermap.org/img/wn/11d@2x.png`  : `https://openweathermap.org/img/wn/11n@2x.png` ;
-        case 201:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/11d@2x.png`  : `https://openweathermap.org/img/wn/11n@2x.png` ;
-        case 202:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/11d@2x.png`  : `https://openweathermap.org/img/wn/11n@2x.png` ;
-        case 210:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/11d@2x.png`  : `https://openweathermap.org/img/wn/11n@2x.png` ;
-        case 211:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/11d@2x.png`  : `https://openweathermap.org/img/wn/11n@2x.png` ;
-        case 212:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/11d@2x.png`  : `https://openweathermap.org/img/wn/11n@2x.png` ;
-        case 221:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/11d@2x.png`  : `https://openweathermap.org/img/wn/11n@2x.png` ;
-        case 230:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/11d@2x.png`  : `https://openweathermap.org/img/wn/11n@2x.png` ;
-        case 231:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/11d@2x.png`  : `https://openweathermap.org/img/wn/11n@2x.png` ;
-        case 232:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/11d@2x.png`  : `https://openweathermap.org/img/wn/11n@2x.png` ;
-        //Drizzle
-        case 300:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/09d@2x.png`  : `https://openweathermap.org/img/wn/09n@2x.png` ;
-        case 301:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/09d@2x.png`  : `https://openweathermap.org/img/wn/09n@2x.png` ;
-        case 302:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/09d@2x.png`  : `https://openweathermap.org/img/wn/09n@2x.png` ;
-        case 310:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/09d@2x.png`  : `https://openweathermap.org/img/wn/09n@2x.png` ;
-        case 311:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/09d@2x.png`  : `https://openweathermap.org/img/wn/09n@2x.png` ;
-        case 312:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/09d@2x.png`  : `https://openweathermap.org/img/wn/09n@2x.png` ;
-        case 313:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/09d@2x.png`  : `https://openweathermap.org/img/wn/09n@2x.png` ;
-        case 314:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/09d@2x.png`  : `https://openweathermap.org/img/wn/09n@2x.png` ;
-        case 321:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/09d@2x.png`  : `https://openweathermap.org/img/wn/09n@2x.png` ;
-        //Rain
-        case 500:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/10d@2x.png`  : `https://openweathermap.org/img/wn/10n@2x.png` ;
-        case 501:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/10d@2x.png`  : `https://openweathermap.org/img/wn/10n@2x.png` ;
-        case 502:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/10d@2x.png`  : `https://openweathermap.org/img/wn/10n@2x.png` ;
-        case 503:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/10d@2x.png`  : `https://openweathermap.org/img/wn/10n@2x.png` ;
-        case 504:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/10d@2x.png`  : `https://openweathermap.org/img/wn/10n@2x.png` ;
-        case 511:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/10d@2x.png`  : `https://openweathermap.org/img/wn/10n@2x.png` ;
-        case 520:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/10d@2x.png`  : `https://openweathermap.org/img/wn/10n@2x.png` ;
-        case 521:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/10d@2x.png`  : `https://openweathermap.org/img/wn/10n@2x.png` ;
-        case 522:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/10d@2x.png`  : `https://openweathermap.org/img/wn/10n@2x.png` ;
-        case 531:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/10d@2x.png`  : `https://openweathermap.org/img/wn/10n@2x.png` ;
-        //Snow
-        case 600:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/13d@2x.png`  : `https://openweathermap.org/img/wn/13n@2x.png` ;
-        case 601:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/13d@2x.png`  : `https://openweathermap.org/img/wn/13n@2x.png` ;
-        case 602:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/13d@2x.png`  : `https://openweathermap.org/img/wn/13n@2x.png` ;
-        case 611:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/13d@2x.png`  : `https://openweathermap.org/img/wn/13n@2x.png` ;
-        case 612:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/13d@2x.png`  : `https://openweathermap.org/img/wn/13n@2x.png` ;
-        case 613:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/13d@2x.png`  : `https://openweathermap.org/img/wn/13n@2x.png` ;
-        case 615:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/13d@2x.png`  : `https://openweathermap.org/img/wn/13n@2x.png` ;
-        case 616:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/13d@2x.png`  : `https://openweathermap.org/img/wn/13n@2x.png` ;
-        case 620:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/13d@2x.png`  : `https://openweathermap.org/img/wn/13n@2x.png` ;
-        case 621:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/13d@2x.png`  : `https://openweathermap.org/img/wn/13n@2x.png` ;
-        case 622:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/13d@2x.png`  : `https://openweathermap.org/img/wn/13n@2x.png` ;
-        //Atmosphere
-        case 701:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/50d@2x.png`  : `https://openweathermap.org/img/wn/50n@2x.png` ;
-        case 711:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/50d@2x.png`  : `https://openweathermap.org/img/wn/50n@2x.png` ;
-        case 721:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/50d@2x.png`  : `https://openweathermap.org/img/wn/50n@2x.png` ;
-        case 731:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/50d@2x.png`  : `https://openweathermap.org/img/wn/50n@2x.png` ;
-        case 741:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/50d@2x.png`  : `https://openweathermap.org/img/wn/50n@2x.png` ;
-        case 751:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/50d@2x.png`  : `https://openweathermap.org/img/wn/50n@2x.png` ;
-        case 761:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/50d@2x.png`  : `https://openweathermap.org/img/wn/50n@2x.png` ;
-        case 762:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/50d@2x.png`  : `https://openweathermap.org/img/wn/50n@2x.png` ;
-        case 771:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/50d@2x.png`  : `https://openweathermap.org/img/wn/50n@2x.png` ;
-        case 781:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/50d@2x.png`  : `https://openweathermap.org/img/wn/50n@2x.png` ;
-        //Clear
-        case 800:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/01d@2x.png`  : `https://openweathermap.org/img/wn/01n@2x.png` ;
-        //Clouds
-        case 801:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/02d@2x.png`  : `https://openweathermap.org/img/wn/02n@2x.png` ;
-        case 802:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/02d@2x.png`  : `https://openweathermap.org/img/wn/02n@2x.png` ;
-        case 803:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/02d@2x.png`  : `https://openweathermap.org/img/wn/02n@2x.png` ;
-        case 804:
-            return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/02d@2x.png`  : `https://openweathermap.org/img/wn/02n@2x.png` ;
-    }
-    
-    return getDayOrNight(date) === "Day" ? `https://openweathermap.org/img/wn/01d@2x.png`  : `https://openweathermap.org/img/wn/01n@2x.png` ;
-};
-
-const getDayOrNight = (dateString: string): string => {
-    const date = new Date(dateString);
-    const hours = date.getHours();  
-    if (hours >= 6 && hours < 18) {
-      return "Day";
-    } else {
-      return "Night";
-    }
-};
-
 export function getDate(dateString: string)
 {
     const date = new Date(dateString);
@@ -180,7 +45,8 @@ export function groupForecastData(data: ForecastData)
                         date: data.list[i].dt_txt,
                         temp_min: data.list[i].main.temp_min,
                         temp_max: data.list[i].main.temp_max,
-                        weather: data.list[i].weather[0].id,
+                        weatherId: data.list[i].weather[0].id,
+                        weather: data.list[i].weather[0].icon,
                     });
                 }
 
@@ -190,6 +56,7 @@ export function groupForecastData(data: ForecastData)
                     temp_min: data.list[currentWeather].main.temp_min,
                     temp_max: data.list[currentWeather].main.temp_max,
                     weatherId: data.list[currentWeather].weather[0].id,
+                    weatherIcon: data.list[currentWeather].weather[0].icon,
                     weatherHours: weatherHours
                 }
 
@@ -204,7 +71,8 @@ export function groupForecastData(data: ForecastData)
                 date: data.list[i].dt_txt,
                 temp_min: data.list[i].main.temp_min,
                 temp_max: data.list[i].main.temp_max,
-                weather: data.list[i].weather[0].id,
+                weather: data.list[i].weather[0].icon,
+                weatherId: data.list[i].weather[0].id,
             });
             
         }
@@ -218,5 +86,5 @@ export function getDateRoute(dateS: string) {
 }
 
 export function getIconUrl(icon: string) {
-    return `https://openweathermap.org/img/wn/${icon}.png`;
+    return `https://openweathermap.org/img/wn/${icon}@2x.png`;
 }

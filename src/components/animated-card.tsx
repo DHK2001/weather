@@ -1,5 +1,5 @@
 import { Weather } from "@/services/forecast-interfaces";
-import { getDate, getIcons } from "@/utils/helpers";
+import { getDate, getIconUrl } from "@/utils/helpers";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -24,7 +24,7 @@ function AnimatedCard({ item }: { item: Weather }) {
           <div className="flex flex-row text-center items-center justify-center p-0 mt-2">
             <Image
               className="w-10 m-0 p-0"
-              src={getIcons(item2.weather, item2.date)}
+              src={getIconUrl(item2.weather)}
               alt="weather"
               width={100}
               height={100}
