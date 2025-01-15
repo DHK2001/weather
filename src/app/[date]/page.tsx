@@ -1,5 +1,6 @@
 "use client";
 
+import GoBackButton from "@/components/go-back-buttons";
 import { fetchWeatherByCity } from "@/services/api";
 import {
   localStorageGetCity,
@@ -26,7 +27,7 @@ const page = () => {
 
   const { date } = useParams();
   return <>
-    <Link href="/">Go Back</Link>
+    <GoBackButton text="Go Back" />
   </>;
 };
 
