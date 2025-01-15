@@ -72,7 +72,7 @@ export default function Home() {
         <Loading />
       )}
       <div className="overflow-y-auto max-h-[74vh]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 ml-5 mr-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 ml-5 mr-5">
           {forecastData?.map((item, index) => (
             <div key={index}>
               <Card
