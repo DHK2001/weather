@@ -71,23 +71,25 @@ export default function Home() {
       ) : (
         <Loading />
       )}
-      <ul className="flex flex-wrap justify-center overflow-y-auto max-h-[75vh]">
-        {forecastData?.map((item, index) => (
-          <li key={index} className="w-60 ml-2 mr-2">
-            <Card
-              item={item}
-              cityCountry={city + ", " + countryCode}
-              index={index}
-              toggleDropdown={() =>
-                setShowMore((prev) => (prev === index ? null : index))
-              }
-            />
-            <AnimatePresence>
-              {showMore === index ? <AnimatedCard item={item} /> : null}
-            </AnimatePresence>
-          </li>
-        ))}
-      </ul>
+      <div className="overflow-y-auto max-h-[74vh]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 ml-5 mr-5">
+          {forecastData?.map((item, index) => (
+            <div key={index}>
+              <Card
+                item={item}
+                cityCountry={city + ", " + countryCode}
+                index={index}
+                toggleDropdown={() =>
+                  setShowMore((prev) => (prev === index ? null : index))
+                }
+              />
+              <AnimatePresence>
+                {showMore === index ? <AnimatedCard item={item} /> : null}
+              </AnimatePresence>
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   );
 }

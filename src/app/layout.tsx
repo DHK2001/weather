@@ -1,17 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "@/providers/providers";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Weather App",
@@ -23,11 +12,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const getActualYear = () => {
+    return new Date().getFullYear();
+  };
+
   return (
     <html lang="en" className="min-w-min">
       <body
         className={
-          "${geistSans.variable} ${geistMono.variable} flex flex-col min-h-screen bg-gradient-to-r from-sky-400 to-blue-600"
+          "flex flex-col min-h-screen bg-gradient-to-r from-sky-400 to-blue-600"
         }
       >
         <Providers>
@@ -38,7 +31,7 @@ export default function RootLayout({
             {children}
           </main>
           <footer className="bg-gray-600 text-white py-4 text-center sticky bottom-0">
-            <p>© 2025 Weather App</p>
+            <p>© {getActualYear()} Weather App</p>
           </footer>
         </Providers>
       </body>

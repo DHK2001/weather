@@ -22,8 +22,10 @@ export function getDate(dateString: string)
     const date = new Date(dateString);
     var day = days[date.getDay()] + ' - ' + date.getDate() + 'th';
     var ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+    var hour = date.getHours() % 12;
+    hour = hour === 0 ? 12 : hour;
     var minutes = date.getMinutes() <= 9 ? '0'+date.getMinutes() : date.getMinutes();
-    var time = date.getHours() + ':' + minutes + " " + ampm;
+    var time = hour + ':' + minutes + " " + ampm;
     return {day, time};     
 }
 

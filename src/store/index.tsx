@@ -20,19 +20,19 @@ type Store = {
 export const useStore = create<Store>()((set) => ({
   units: localStorageGetUnits() ?? "metric",
   setUnits: (unitsP: string) => {
-    set((state) => ({ units: unitsP }));
+    set(() => ({ units: unitsP }));
     localStorageSetUnits(unitsP);
   },
 
   city: localStorageGetCity() ?? "London",
   setCity: (cityP: string) => {
-    set((state) => ({ city: cityP }));
+    set(() => ({ city: cityP }));
     localStorageSetCity(cityP);
   },
 
   countryCode: localStorageGetCountryCode() ?? "GB",
   setCountryCode: (countryCodeP: string) => {
-    set((state) => ({ countryCode: countryCodeP }));
+    set(() => ({ countryCode: countryCodeP }));
     localStorageSetCountryCode(countryCodeP);
   },
 }));

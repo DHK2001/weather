@@ -44,11 +44,15 @@ function WeatherGrid({ weatherData, getUnitSymbol }: Props) {
         <h2 className="text-xl font-semibold mb-2">Sun</h2>
         <p>
           Sunrise:{" "}
-          {new Date(weatherData?.sys.sunrise ?? 0 * 1000).toLocaleTimeString()}
+          {weatherData?.sys.sunrise
+            ? new Date(weatherData?.sys.sunrise * 1000).toLocaleTimeString()
+            : null}
         </p>
         <p>
           Sunset:{" "}
-          {new Date(weatherData?.sys.sunset ?? 0 * 1000).toLocaleTimeString()}
+          {weatherData?.sys.sunset
+            ? new Date(weatherData?.sys.sunset * 1000).toLocaleTimeString()
+            : null}
         </p>
       </CardWeather>
     </div>

@@ -37,7 +37,7 @@ const page = () => {
         weatherData === null ? (
           <EmptyMessage message="No items to display" />
         ) : (
-          <div className="p-6 text-white overflow-y-auto max-h-[75vh]">
+          <div className="p-6 mt-5 text-white overflow-y-auto max-h-[75vh]">
             <WeatherHeader
               weatherData={weatherData}
               getUnitSymbol={getUnitSymbol}
