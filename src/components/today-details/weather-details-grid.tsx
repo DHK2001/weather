@@ -1,5 +1,6 @@
 import CardWeather from "@/components/today-details/card-weather";
 import { WeatherData } from "@/services/weather-interface";
+import { format } from 'date-fns-tz';
 
 interface Props {
   weatherData?: WeatherData;
@@ -7,6 +8,18 @@ interface Props {
 }
 
 function WeatherGrid({ weatherData, getUnitSymbol }: Props) {
+  
+  const convertDate = (timestamp: number, offsetInSeconds: number) => {
+    const utcDate = new Date(timestamp * 1000);
+    const offsetInMilliseconds = offsetInSeconds * 1000;
+    const adjustedDate = new Date(utcDate.getTime() + offsetInMilliseconds);
+    const formattedDate = format(adjustedDate, "h:mm a");
+  
+    console.log(formattedDate);
+  
+    return formattedDate;
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <CardWeather>
@@ -45,13 +58,19 @@ function WeatherGrid({ weatherData, getUnitSymbol }: Props) {
         <p>
           Sunrise:{" "}
           {weatherData?.sys.sunrise
-            ? new Date(weatherData?.sys.sunrise * 1000).toLocaleTimeString()
+            ? convertDate(
+                weatherData?.sys.sunrise,
+                weatherData?.timezone
+              )
             : null}
         </p>
         <p>
           Sunset:{" "}
           {weatherData?.sys.sunset
-            ? new Date(weatherData?.sys.sunset * 1000).toLocaleTimeString()
+            ? convertDate(
+                weatherData?.sys.sunset,
+                weatherData?.timezone
+              )
             : null}
         </p>
       </CardWeather>

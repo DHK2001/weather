@@ -25,5 +25,6 @@ export interface WeatherData {
         sunrise: number;
         sunset: number;
     };
+    timezone: number;
     name: string;
 }
