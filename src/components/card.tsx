@@ -1,7 +1,7 @@
 "use client";
 
-import { Weather } from "@/services/weather-interfaces";
-import { getDate, getDateRoute, getIcons } from "@/utils/helpers";
+import { Weather } from "@/services/forecast-interfaces";
+import { getDate, getIcons } from "@/utils/helpers";
 import {
   localStorageSetCity,
   localStorageSetCountryCode,

@@ -1,5 +1,5 @@
-import { WeatherData, WeatherHours } from "@/services/weather-interfaces";
-import { Weather } from "@/services/weather-interfaces";
+import { ForecastData, WeatherHours } from "@/services/forecast-interfaces";
+import { Weather } from "@/services/forecast-interfaces";
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -162,11 +162,11 @@ export function getDate(dateString: string)
     return {day, time};     
 }
 
-export function groupForecastData(data: WeatherData)
+export function groupForecastData(data: ForecastData)
 {
     var currentDate = -1;
     var weatherHours: WeatherHours[] = [];    
-    var weatherData: Weather[] = [];
+    var forecastData: Weather[] = [];
     var currentWeather = -1;
     
     for (var i = 0; i < data.list.length; i++) {
@@ -193,7 +193,7 @@ export function groupForecastData(data: WeatherData)
                     weatherHours: weatherHours
                 }
 
-                weatherData.push(weather);
+                forecastData.push(weather);
                 weatherHours = [];
             }
 
@@ -209,10 +209,14 @@ export function groupForecastData(data: WeatherData)
             
         }
     }
-    return weatherData;     
+    return forecastData;     
 }
 
 export function getDateRoute(dateS: string) {
     const date = new Date(dateS);
     return (months[date.getMonth()]) + '-' + date.getDate() + '-' + date.getFullYear() ;
+}
+
+export function getIconUrl(icon: string) {
+    return `https://openweathermap.org/img/wn/${icon}.png`;
 }

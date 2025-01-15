@@ -54,6 +54,11 @@ body {
   }
 
   .go-back-button {
-    @apply border-2 border-white p-2 rounded-lg ml-2 mt-5 font-bold text-white max-w-28 text-center hover:border-blue-800  hover:text-blue-800
+    @apply border-2 border-white p-2 rounded-lg ml-2 font-bold text-white max-w-28 text-center hover:border-blue-800  hover:text-blue-800
   }
+
+  .card-forecast {
+    @apply border-2 border-white rounded-lg p-5 flex flex-col items-center text-center
+  }
+
 }

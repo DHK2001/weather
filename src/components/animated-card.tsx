@@ -1,4 +1,4 @@
-import { Weather } from "@/services/weather-interfaces";
+import { Weather } from "@/services/forecast-interfaces";
 import { getDate, getIcons } from "@/utils/helpers";
 import { motion } from "framer-motion";
 import Image from "next/image";

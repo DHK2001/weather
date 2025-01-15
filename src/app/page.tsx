@@ -11,6 +11,7 @@ import SelectOptions from "@/components/select-options";
 import React from "react";
 import { useStore } from "@/store";
 import UnitsButton from "@/components/button-units";
+import EmptyMessage from "@/components/no-data-message";
 
 export default function Home() {
   const queryClient = useQueryClient();
@@ -65,9 +66,7 @@ export default function Home() {
 
       {!isLoading ? (
         forecastData && forecastData.length === 0 ? (
-          <h2 className="text-2xl text-center py-5 text-white">
-            No items to display
-          </h2>
+          <EmptyMessage message="No items to display" />
         ) : null
       ) : (
         <Loading />

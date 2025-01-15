@@ -1,9 +1,9 @@
 
-export interface WeatherData {
-    list: WeatherItem[];
+export interface ForecastData {
+    list: ForecastItem[];
 }
 
-export interface WeatherItem {
+export interface ForecastItem {
     main: {
         temp_min: number;
         temp_max: number;
